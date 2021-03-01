@@ -1,0 +1,96 @@
+<h1>{{modoEdicion ? 'Editar' : 'Agregar'}} Cliente</h1>
+<form class="form-horizontal" novalidate
+      (ngSubmit)="save()" [formGroup]="formGroup">
+  <fieldset>
+    <div class="form-group"
+         [ngClass]="{'has-error': (formGroup.get('Cedula').touched || formGroup.get('Cedula').dirty) && !formGroup.get('Cedula').valid }">
+      <label class="col-md-2 control-label"
+             for="Cedula">Cedula</label>
+      <div class="col-md-8">
+        <input class="form-control"
+               id="Cedula"
+               type="number"
+               required
+               formControlName="Cedula" />
+        <span class="help-block" *ngIf="(formGroup.get('Cedula').touched || formGroup.get('Cedula').dirty) && formGroup.get('Cedula').errors">
+          <span *ngIf="formGroup.get('Cedula').errors.required">
+            El campo cedula es requerido
+          </span>
+        </span>
+      </div>
+    </div>
+    <div class="form-group"
+         [ngClass]="{'has-error': (formGroup.get('Nombre').touched || formGroup.get('Nombre').dirty) && !formGroup.get('Nombre').valid }">
+      <label class="col-md-2 control-label"
+             for="NombreId">Nombre</label>
+
+      <div class="col-md-8">
+        <input class="form-control"
+               id="NombreId"
+               type="text"
+               required
+               formControlName="Nombre" />
+        <span class="help-block" *ngIf="(formGroup.get('Nombre').touched || formGroup.get('Nombre').dirty) && formGroup.get('Nombre').errors">
+          <span *ngIf="formGroup.get('Nombre').errors.required">
+            El campo nombre es requerido
+          </span>
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group"
+         [ngClass]="{'has-error': (formGroup.get('Telefono').touched || formGroup.get('Telefono').dirty) && !formGroup.get('Telefono').valid }">
+      <label class="col-md-2 control-label"
+             for="Telefono">Telefono</label>
+      <div class="col-md-8">
+        <input class="form-control"
+               id="Telefono"
+               type="number"
+               required
+               formControlName="Telefono" />
+        <span class="help-block" *ngIf="(formGroup.get('Telefono').touched || formGroup.get('Telefono').dirty) && formGroup.get('Telefono').errors">
+          <span *ngIf="formGroup.get('Telefono').errors.required">
+            El campo telefono es requerido
+          </span>
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group"
+         [ngClass]="{'has-error': (formGroup.get('Correo').touched || formGroup.get('Correo').dirty) && !formGroup.get('Correo').valid }">
+      <label class="col-md-2 control-label"
+             for="Correo">Correo</label>
+      <div class="col-md-8">
+        <input class="form-control"
+               id="Correo"
+               type="email"
+               required
+               formControlName="Correo" />
+        <span class="help-block" *ngIf="(formGroup.get('Correo').touched || formGroup.get('Correo').dirty) && formGroup.get('Correo').errors">
+          <span *ngIf="formGroup.get('Correo').errors.required">
+            El campo correo es requerido
+          </span>
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-md-4 col-md-offset-2">
+        <span>
+          <button class="btn btn-primary"
+                  type="submit"
+                  [disabled]="!formGroup.valid">
+            Guardar
+          </button>
+          <button class="btn"
+                  type="button"
+                  [routerLink]='["/personas"]'>
+            Cancelar
+          </button>
+        </span>
+
+      </div>
+
+    </div>
+  </fieldset>
+</form>

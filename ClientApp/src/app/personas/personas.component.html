@@ -1,0 +1,30 @@
+<h1>Clientes</h1>
+
+<button [routerLink]='["/personas-agregar"]' class="btn btn-primary">Agregar Cliente</button>
+
+<p *ngIf="!(personas && personas.length)">
+  No existen registros para mostrar
+</p>
+
+<table class="table" *ngIf="personas && personas.length">
+  <thead>
+    <tr>
+      <th>Cedula</th>
+      <th>Nombre</th>
+      <th>Tefono</th>
+      <th>Correo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let persona of personas">
+      <td>{{persona.cedula}}</td>
+      <td>{{persona.nombre}}</td>
+      <td>{{persona.telefono}}</td>
+      <td>{{persona.correo}}</td>
+      <td>
+        <button class="btn btn-primary" [routerLink]='["/personas-editar/" + persona.id]'>Editar</button>
+        <button class="btn btn-danger" (click)="delete(persona)">Borrar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
